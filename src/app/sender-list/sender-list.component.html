@@ -1,0 +1,116 @@
+<mat-form-field class="w-full mt-4" appearance="outline">
+  <mat-label>Search</mat-label>
+  <input matInput (keyup)="filter($event)" placeholder="Enter Search Value" />
+</mat-form-field>
+
+<div class="relative min-h-[300px] overflow-x-scroll">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="idobject">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+      <td mat-cell *matCellDef="let element" data-label="Id">
+        {{ element.idobject }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="companyName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Company Name</th>
+      <td mat-cell *matCellDef="let element" data-label="Company Name">
+        {{ element.companyName }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="zipCode">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Zip Code</th>
+      <td mat-cell *matCellDef="let element" data-label="Zip Code">
+        {{ element.zipCode }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="country">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Country</th>
+      <td mat-cell *matCellDef="let element" data-label="Country">
+        {{ element.country }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="region">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Region</th>
+      <td mat-cell *matCellDef="let element" data-label="Region">
+        {{ element.region }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>City</th>
+      <td mat-cell *matCellDef="let element" data-label="City">
+        {{ element.city }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="street">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Street</th>
+      <td mat-cell *matCellDef="let element" data-label="Street">
+        {{ element.street }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="houseNo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>House No.</th>
+      <td mat-cell *matCellDef="let element" data-label="House No.">
+        {{ element.houseNo }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="flatNo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Flat No.</th>
+      <td mat-cell *matCellDef="let element" data-label="Flat No.">
+        {{ element.flatNo }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone</th>
+      <td mat-cell *matCellDef="let element" data-label="Phone">
+        {{ element.phone }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="senderUrl">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Url</th>
+      <td mat-cell *matCellDef="let element" data-label="Url">
+        {{ element.senderUrl }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          (click)="openSenderDialogForm(element)"
+          mat-flat-button
+          color="primary"
+        >
+          edit
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns"></tr>
+  </table>
+
+  <div
+    *ngIf="isLoading"
+    class="absolute z-50 bg-black bg-opacity-40 top-0 w-full h-full flex items-center justify-center"
+  >
+    <mat-spinner></mat-spinner>
+  </div>
+</div>
+
+<div class="flex flex-col md:flex-row items-center justify-between mt-10">
+  <button (click)="openSenderDialogForm()" mat-flat-button color="primary">
+    create
+  </button>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" />
+</div>

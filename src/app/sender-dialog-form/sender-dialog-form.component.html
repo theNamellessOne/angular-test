@@ -1,0 +1,88 @@
+<h2 mat-dialog-title>Install Angular</h2>
+
+<mat-dialog-content>
+  <form
+    [formGroup]="senderForm"
+    class="grid md:grid-cols-2 gap-x-4 min-w-[60vw]"
+  >
+    <app-input
+      [parentForm]="senderForm"
+      label="Company Name"
+      placeholder="Example Group"
+      formControlName="companyName"
+      name="companyName"
+    />
+    <app-input
+      [parentForm]="senderForm"
+      label="Zip Code"
+      placeholder="580001"
+      formControlName="zipCode"
+      name="zipCode"
+    />
+    <app-input
+      [parentForm]="senderForm"
+      label="Country"
+      placeholder="Ukraine"
+      formControlName="country"
+      name="country"
+    />
+    <app-input
+      [parentForm]="senderForm"
+      label="Region"
+      placeholder="Chernivetska Oblast"
+      formControlName="region"
+      name="region"
+    />
+    <app-input
+      [parentForm]="senderForm"
+      label="City"
+      placeholder="Chernivtsi"
+      formControlName="city"
+      name="city"
+    />
+    <app-input
+      [parentForm]="senderForm"
+      label="Street"
+      placeholder="Holovna"
+      formControlName="street"
+      name="street"
+    />
+    <app-input
+      [parentForm]="senderForm"
+      label="House No."
+      placeholder="32"
+      formControlName="houseNo"
+      name="houseNo"
+    />
+    <app-input
+      [parentForm]="senderForm"
+      label="Flat No."
+      placeholder="15"
+      formControlName="flatNo"
+      name="flatNo"
+    />
+    <app-input
+      [parentForm]="senderForm"
+      label="Phone"
+      placeholder="phone"
+      formControlName="phone"
+      name="phone"
+    />
+    <app-input
+      [parentForm]="senderForm"
+      label="Sender Url"
+      placeholder="www.example.org"
+      formControlName="senderUrl"
+      name="senderUrl"
+    />
+  </form>
+
+  <h2 *ngIf="msg">
+    {{ msg }}
+  </h2>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-dialog-close mat-flat-button color="warn">Cancel</button>
+  <button mat-flat-button color="primary" (click)="handleSubmit()">Save</button>
+</mat-dialog-actions>
