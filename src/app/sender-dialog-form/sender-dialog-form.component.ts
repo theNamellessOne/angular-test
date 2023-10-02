@@ -31,9 +31,15 @@ export class SenderDialogFormComponent {
       city: new FormControl(data?.city || '', {
         validators: [Validators.required],
       }),
-      street: new FormControl(data?.street || ''),
-      houseNo: new FormControl(data?.houseNo || ''),
-      flatNo: new FormControl(data?.flatNo || ''),
+      street: new FormControl(data?.street || '', {
+        validators: [Validators.required],
+      }),
+      houseNo: new FormControl(data?.houseNo || '', {
+        validators: [Validators.required],
+      }),
+      flatNo: new FormControl(data?.flatNo || '', {
+        validators: [Validators.required],
+      }),
       senderUrl: new FormControl(data?.senderUrl || ''),
       phone: new FormControl(data?.phone || '', {
         validators: [Validators.required],
